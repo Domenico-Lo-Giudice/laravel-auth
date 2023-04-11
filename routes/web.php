@@ -21,11 +21,14 @@ Route::get('/', [GuestHomeController::class, 'index']);
 
 Route::get('/home', [AdminHomeController::class, 'index'])->middleware('auth')->name('home');
 
+
+
 Route::middleware('auth')
     ->prefix('/admin')
     ->name('admin.')
     ->group(function() {
-        Route::resource('projects', ProjectController::class);
+        Route::resource('projects', ProjectController::class)
+            ->parameters(['projects' => 'project:slug']);
 
     });
 
