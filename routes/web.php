@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [GuestHomeController::class, 'index']);
 
 Route::get('/home', [AdminHomeController::class, 'index'])->middleware('auth')->name('home');
+
+Route::middleware('auth')
+    ->prefix('/admin')
+    ->group(function() {
+        Route::resource('projects', ProjectController::class);
+
+    });
 
 Route::middleware('auth')
     ->prefix('/profile') // tutti gli url hanno il prefisso "/profile"
