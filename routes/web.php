@@ -23,6 +23,7 @@ Route::get('/home', [AdminHomeController::class, 'index'])->middleware('auth')->
 
 Route::middleware('auth')
     ->prefix('/admin')
+    ->name('admin.')
     ->group(function() {
         Route::resource('projects', ProjectController::class);
 
