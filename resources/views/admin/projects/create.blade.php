@@ -14,7 +14,43 @@
 <section class="card">
 
   <div class="card-body">
-    </div>
+
+    <form method="POST" action="{{ route('admin.projects.store') }}" class="row">
+        @csrf
+
+        <div class="col-4">
+
+      
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <label for="title" class="form-label">title</label>
+                    <input type= "text" name = "title" id = "title" class="form-control"/>
+                    
+                </div>
+                
+                <div class="col-12 mb-3">
+                    <label for="image" class="form-label">image</label>
+                    <input type= "text" name = "image" id = "image" class="form-control"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-8 mb-3">
+            <label for="text" class="form-label">text</label>
+            <textarea name= "text" id = "text" class="form-control" rows="5"></textarea>
+        </div>
+
+            
+            
+            <div class="col-4 mb-3">
+                <input type= "submit" class="btn btn-primary" value="Salva"/>
+            </div>
+
+
+    </form>
+
+
+</div>
 
 </section>
 

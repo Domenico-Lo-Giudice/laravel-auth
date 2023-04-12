@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -37,7 +38,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = new Project;
+        $project->fill($request->all());
+        $project->slug = Project::generateSlug($project->title);
+        $project->save();
+
+        return to_route('admin.projects.show', $project);
+
+        
     }
 
     /**
