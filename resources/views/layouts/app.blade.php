@@ -23,7 +23,7 @@
 </head>
 
 <body >
-    <div>
+    <div class="d-flex">
 
         @include('layouts.partials.navbar')
 
