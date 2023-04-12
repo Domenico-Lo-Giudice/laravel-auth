@@ -12,7 +12,10 @@
 @endsection
 
 @section('content')
-<section>
+<section class="card">
+
+  <div class="card-body">
+
 
     <table class="table table-striped">
         <thead>
@@ -43,6 +46,7 @@
       </table>
 
       {{ $projects->links() }}
+    </div>
 
 </section>
 
