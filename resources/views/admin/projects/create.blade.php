@@ -11,43 +11,47 @@
 @endsection
 
 @section('content')
-<section class="card">
+<section class="card py-2">
 
   <div class="card-body">
 
     <form method="POST" action="{{ route('admin.projects.store') }}" class="row">
         @csrf
 
-        <div class="col-4">
 
-      
+        <div class="row mb-3">
+        <div class="col-md-2 text-end">
+            <label for="title" class="form-label">Titolo</label>
+        </div>
+        <div class="col-md-10">
+            <input type= "text" name = "title" id = "title" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-2 text-end">
+            <label for="title" class="form-label">Immagine</label>
+        </div>
+        <div class="col-md-10">
+            <input type= "text" name = "title" id = "title" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-2 text-end">
+            <label for="title" class="form-label">Testo</label>
+        </div>
+        <div class="col-md-10">
+            <textarea type= "text" name = "title" id = "title" class="form-control" rows="5"></textarea>
+        </div>
+    </div>
+            
             <div class="row">
-                <div class="col-12 mb-3">
-                    <label for="title" class="form-label">title</label>
-                    <input type= "text" name = "title" id = "title" class="form-control"/>
-                    
-                </div>
-                
-                <div class="col-12 mb-3">
-                    <label for="image" class="form-label">image</label>
-                    <input type= "text" name = "image" id = "image" class="form-control"/>
+                <div class="offset-2 col-8">
+                    <input type= "submit" class="btn btn-primary" value="Salva"/>
                 </div>
             </div>
-        </div>
-        
-        <div class="col-8 mb-3">
-            <label for="text" class="form-label">text</label>
-            <textarea name= "text" id = "text" class="form-control" rows="5"></textarea>
-        </div>
-
-            
-            
-            <div class="col-4 mb-3">
-                <input type= "submit" class="btn btn-primary" value="Salva"/>
-            </div>
-
-
-    </form>
+        </form>
 
 
 </div>

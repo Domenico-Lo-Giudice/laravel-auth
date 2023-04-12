@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::orderBy('updated_at', 'DESC')->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -67,7 +67,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -79,7 +79,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->fill($request->all());
+        $project->slug = Project::generateSlug($project->title);
+        $project->save();
+
+        return to_route('admin.projects.show', $project);
     }
 
     /**
@@ -90,6 +94,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.projects.index');
     }
 }

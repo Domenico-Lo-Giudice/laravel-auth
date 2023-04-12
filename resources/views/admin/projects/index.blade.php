@@ -35,8 +35,18 @@
               <td>{{ $project->getAbstract() }}</td>
               <td>
                 <a href="{{ route('admin.projects.show', $project)}}">
-                    <i class="bi bi-eye"></i>
+                    <i class="bi bi-eye mx-2"></i>
                 </a>
+
+                <a href="{{ route('admin.projects.edit', $project)}}">
+                  <i class="bi bi-pencil mx-2"></i>
+              </a>
+
+
+              <a href="{{ route('admin.projects.edit', $project)}}" class="text-danger" data-bs-toggle="modal" data-bs-target="#delete-project-modal-{{ $project->id}}">
+                <i class="bi bi-trash mx-2"></i>
+            </a>
+
               </td>
             </tr>
             @empty   
@@ -50,4 +60,35 @@
 
 </section>
 
+@endsection
+
+@section('modals')
+  @foreach ($projects as $project)
+
+  <div class="modal modal-lg fade" id="delete-project-modal-{{ $project->id }}" tabindex="-1" 
+    aria-labelledby="delete-project-modal-{{ $project->id }}-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="delete-project-modal-{{ $project->id}}-label">Delete Project</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Sei sicuro di voler eliminare il progetto "{{ $project->title}}"? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+          <form method="POST" action="{{ route('admin.projects.destroy', $project) }}">
+          @method('delete')
+          @csrf
+
+            <button type="submit" class="btn btn-danger">Elimina</button>
+          </form>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
 @endsection
