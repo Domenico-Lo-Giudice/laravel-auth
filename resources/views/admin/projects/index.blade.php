@@ -3,6 +3,14 @@
 
 @section('title', 'Projects')
 
+@section('actions')
+<div>
+  <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">
+    Aggiungi nuovo progetto
+  </a>
+</div>
+@endsection
+
 @section('content')
 <section>
 
