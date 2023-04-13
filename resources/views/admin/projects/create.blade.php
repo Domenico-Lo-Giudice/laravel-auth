@@ -15,7 +15,7 @@
 
   <div class="card-body">
 
-    <form method="POST" action="{{ route('admin.projects.store') }}" class="row">
+    <form method="POST" action="{{ route('admin.projects.store') }}" enctype="multipart/form-data" class="row">
         @csrf
 
 

@@ -13,7 +13,7 @@
 @section('content')
     <section class="card">
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.projects.update', $project) }}"> 
+            <form method="POST" action="{{ route('admin.projects.update', $project) }}" enctype="multipart/form-data"> 
                 @method('put')
                 @csrf
 
