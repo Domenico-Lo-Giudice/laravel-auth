@@ -23,7 +23,7 @@
                 <label for="title" class="form-label">Titolo</label>
             </div>
             <div class="col-md-10">
-                <input type= "text" name = "title" id = "title" value ="{{ $project->title }}" class="form-control"/>
+                <input type= "text" name = "title" id = "title" class="form-control"/>
             </div>
         </div>
     

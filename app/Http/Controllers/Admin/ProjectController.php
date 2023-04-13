@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProjectController extends Controller
@@ -38,8 +40,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpg,png,jpeg',
+        ]);
+
+
+        $data = $request->all();
+
+        if(Arr::exists($data, 'image')) {
+            $path = Storage::put('upload/projects', $data['image']);
+            $data['image'] = $path;
+
+        }   
+
+
         $project = new Project;
-        $project->fill($request->all());
+        $project->fill($data);
         $project->slug = Project::generateSlug($project->title);
         $project->save();
 
@@ -79,7 +96,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->fill($request->all());
+
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpg,png,jpeg',
+        ]);
+
+        $data = $request->all();
+
+        if(Arr::exists($data, 'image')) {
+            $path = Storage::put('upload/projects', $data['image']);
+            $data['image'] = $path;
+
+        }   
+
+
+        $project->fill($data);
         $project->slug = Project::generateSlug($project->title);
         $project->save();
 
