@@ -32,7 +32,7 @@
                 <label for="title" class="form-label">Immagine</label>
             </div>
             <div class="col-md-10">
-                <input type= "text" name = "title" id = "title" value ="{{ $project->image }}" class="form-control"/>
+                <input type= "file" name = "image" id = "image" value ="{{ $project->image }}" class="form-control"/>
             </div>
         </div>
     
